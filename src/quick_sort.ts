@@ -1,45 +1,43 @@
-const arrayList: Array<number> = [3, 1, 2];
-
+const arrayList: Array<number> = [1, 2, 33, 31, 1, 2, 63, 123, 6, 32, 943, 346, 24];
+var preventLoop = 0;
 // [1] - pivo - [3]
 // [1 , 2 , 3]
 
 function quick_sort(arr: Array<number>): number[] {
-    let arrayOrdened: Array<number> = [];
-    let arrayLegth = arr.length;
-    let pivo = arr.pop();
-    let higher: Array<number> = [];
-    let minos: Array<number> = [];
+    preventLoop++;
+    if (preventLoop > 10) {
+        return [];
+    }
 
+    var arrayOrdened: Array<number> = [];
+    var arrayLeft: Array<number> = [];
+    var arrayRight: Array<number> = [];
 
-    if(pivo == undefined){
+    if (arr.length < 2) {
+        return arr;
+    }
+
+    if (arr.length == 2) {
+        if (arr[0] > arr[1]) {
+            arrayOrdened[0] = arr.pop()!;
+            arrayOrdened[1] = arr.splice(0, 1)[0];
+        } else {
+            arrayOrdened[0] = arr.splice(0, 1)[0];
+            arrayOrdened[1] = arr.pop()!;
+        }
         return arrayOrdened;
-    }
-
-    if (arrayLegth <= 2) {
-        if(arr[1] != undefined && pivo > arr[1]){
-            arrayOrdened[0] = arr[1];
-            arrayOrdened[1] = pivo;
-        }else{
-            arrayOrdened[0] = pivo;
-            arrayOrdened[1] = arr[1];
-        }
-    } 
-    if(arrayLegth > 2){
-        for (const i of arr) {
-            if (arr[i] >= pivo) {
-                higher.push(arr[i]);
-            } else if(arr[i] != undefined){
-                minos.push(arr[i]);
+    } else {
+        var pivo = arr.pop()!;
+        arr.forEach((element) => {
+            if (element > pivo) {
+                arrayRight.push(element);
+            } else {
+                arrayLeft.push(element);
             }
-        }
+        });
+
+        return quick_sort(arrayLeft).concat([pivo], quick_sort(arrayRight));
     }
-
-
-    arrayOrdened = quick_sort(minos);
-    arrayOrdened.push(pivo);
-    arrayOrdened.concat(quick_sort(higher));
-
-    return arrayOrdened;
 }
 
 console.log(quick_sort(arrayList));
