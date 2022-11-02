@@ -1,6 +1,12 @@
 // get position of a number in array
 // log2 100 = 7
+// 2 x 2 x 2 x 2 x 2
+// 2^7 = 128 
+// 2^2 = 4 ;
+// 2
 // O(log n)
+
+//
 
 const myArgs = process.argv.slice(2);
 let argsNum = parseInt(myArgs[0]);
