@@ -1,14 +1,6 @@
 const arrayList: Array<number> = [1, 2, 33, 31, 1, 2, 63, 123, 6, 32, 943, 346, 24];
-var preventLoop = 0;
-// [1] - pivo - [3]
-// [1 , 2 , 3]
 
 function quick_sort(arr: Array<number>): number[] {
-    preventLoop++;
-    if (preventLoop > 10) {
-        return [];
-    }
-
     var arrayOrdened: Array<number> = [];
     var arrayLeft: Array<number> = [];
     var arrayRight: Array<number> = [];
