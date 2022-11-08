@@ -1,3 +1,7 @@
+// find the mango seller
+// BIG O(number of people, number of arestas)
+// O(V + A)
+
 let dict :{ [key: string]: string[] } = {
     'you': ["bob", "claire", "alice"],
     'bob': ["anuj", "peggy"],
